@@ -1,12 +1,12 @@
---ÜRÜN-FİYAT ANALİZİ
+# -- PRODUCT PRICE ANALYSIS
 
--- Ürün Ekibi, şirket fiyatlandırma stratejisine ilişkin yıllık incelemeleri şu anki ürünlerin fiyatlarını ve hangi fiyat aralığında kaç ürün olduğunu görmek istiyor.
+-- The Product Team is conducting an annual review of the company's pricing strategy. They want to see the current product prices and the distribution of products across different price ranges.
 
--- Onlara yardımcı olmak için sizden aşağıdaki bilgileri içeren bir ürün listesi vermenizi istediler:
--- 1. Ürün Adı
--- 2. Birim Fiyatı
--- 3. Hangi fiyat aralığında olduğu
--- 4. İlgili fiyat aralığında kaç tane ürünümüz var
+-- To assist them, they requested a product list containing the following information:
+-- 1. Product Name
+-- 2. Unit Price
+-- 3. The price range category it belongs to
+-- 4. The number of products in the corresponding price range
 
 WITH DATA AS (
         SELECT product_name,
@@ -33,7 +33,7 @@ WITH DATA AS (
   FROM DATA ;
  
  
---Finans Ekibi, hangi ürünlerin birim fiyatının arttığını öğrenmek istiyor.
+-- The Finance Team wants to identify which products have experienced an increase in unit price.
 
 WITH cte_price AS (
 SELECT
@@ -60,12 +60,13 @@ GROUP BY
 	c.previous_unit_price
 
 
---PERFORMANS ANALİZİ
--- Lojistik Ekibi, 1998 yılında hangi ülkelerde iyi performans gösterdiklerini belirlemek için performanslarının geçmişe dönük bir incelemesini yapmak istiyor.
--- Aşağıdaki bilgileri içeren ülkelerin bir listesini sağlayın:
+-- PERFORMANCE ANALYSIS
+-- The Logistics Team wants to conduct a historical review of their performance to identify in which countries they performed well in 1998.
+-- Provide a list of countries with the following information:
 
--- 1. Sipariş tarihi ile sevkiyat tarihi arasındaki ortalama gün sayısı (yalnızca 2 ondalık olacak şekilde biçimlendirilmiştir)
--- 2. Toplam sipariş sayısı 
+-- 1. The average number of days between the order date and the shipment date (formatted to 2 decimal places)
+-- 2. The total number of orders
+
 
 
 SELECT ship_country,
@@ -78,18 +79,21 @@ SELECT ship_country,
 
 
 
--- Satış Ekibi, çalışanların performanslarını ölçmek için bir KPI listesi oluşturmak istiyor.
--- Sizden çalışanların bir listesini vermenizi istediler:
--- 1. tam adları
--- 2. iş unvanları
--- 3. indirim hariç toplam satış tutarI
--- 4. toplam sipariş sayısı
--- 5. toplam giriş sayısı
--- 6. giriş başına ortalama tutarları 
--- 7. sipariş başına ortalama tutarları 
--- 8. toplam indirim tutarı 
--- 9. indirim dahil toplam satış tutarı 
--- 10. toplam indirim yüzdeleri 
+## -- KPI LIST FOR SALES PERFORMANCE
+
+-- The Sales Team wants to create a KPI list to evaluate employee performance.
+-- They have requested a list of employees with the following details:
+
+1. Full names
+2. Job titles
+3. Total sales amount (excluding discounts)
+4. Total number of orders
+5. Total number of entries
+6. Average amount per entry
+7. Average amount per order
+8. Total discount amount
+9. Total sales amount (including discounts)
+10. Total discount percentage
 
 
 WITH cte_kpi AS (
